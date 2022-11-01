@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/data-intelligence-data-quality)](https://api.reuse.software/info/github.com/SAP-samples/data-intelligence-data-quality)
+
 # data-intelligence-data-quality
 SAP Data Intelligence Cloud Data Quality sample files
 
