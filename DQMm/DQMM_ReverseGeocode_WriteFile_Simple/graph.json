@@ -1,0 +1,146 @@
+{
+    "properties": {},
+    "iconsrc": "dqmMicroservices.svg",
+    "description": "Simple Reverse Geocode DQMm example",
+    "processes": {
+        "dqmmrequest1": {
+            "component": "com.sap.dh.dq.dqmmReverseGeo",
+            "metadata": {
+                "label": "DQMm Reverse Geo",
+                "x": 181,
+                "y": 12,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {
+                    "outputFields": "geo_search_results, geo_search_results_count, geo_info_code, geo_info_code_msg",
+                    "passThroughField": "id",
+                    "maxRecords": "5",
+                    "radius": 0.5,
+                    "distanceUnit": "kilometers"
+                }
+            }
+        },
+        "dqmmclient1": {
+            "component": "com.sap.dh.dq.dqmmClient",
+            "metadata": {
+                "label": "DQMm Client",
+                "x": 350,
+                "y": 12,
+                "height": 80,
+                "width": 120,
+                "ui": "dynpath",
+                "config": {
+                    "host": "host:port",
+                    "oauth2TokenUrl": "https://host/oauth/token?grant_type=client_credentials",
+                    "oauth2ClientId": "",
+                    "oauth2ClientSecret": ""
+                }
+            }
+        },
+        "messagegenerator1": {
+            "component": "com.sap.util.dataMessageGenerator",
+            "metadata": {
+                "label": "Message Generator",
+                "x": 12,
+                "y": 12,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {
+                    "script": "\ngeneratePayload = function() {\n\n    return [\n        \n        // This input will result in a search result list.\n        {\n            id: 1,\n            latitude: 43.809791,\n            longitude: -91.254981,\n        }\n    ];\n    \n};\n\ngenerateMessage = function() {\n    var msg = {};\n    msg.Body = generatePayload();\n    return msg;\n}\n\n$.addGenerator(gen);\n$.addTimer(\"5000ms\", doTick);\n\nfunction gen(ctx) {\n    $.output(generateMessage());\n}\n\nfunction doTick(ctx) {\n    $.done();\n}\n\n"
+                }
+            }
+        },
+        "writefile1": {
+            "component": "com.sap.file.write",
+            "metadata": {
+                "label": "Write File",
+                "x": 633.9999990463257,
+                "y": 12,
+                "height": 80,
+                "width": 120,
+                "generation": 1,
+                "config": {
+                    "connection": {
+                        "configurationType": "System Management Files (\"/files/\")",
+                        "vrepRoot": "/files/"
+                    },
+                    "pathMode": "Static (from configuration)",
+                    "path": "tmp/dqmmReverseGeo.txt",
+                    "mode": "Overwrite"
+                }
+            }
+        },
+        "tofile1": {
+            "component": "com.sap.file.toFile",
+            "metadata": {
+                "label": "To File",
+                "x": 534.9999990463257,
+                "y": 27,
+                "height": 50,
+                "width": 50,
+                "generation": 1,
+                "config": {}
+            }
+        }
+    },
+    "groups": [],
+    "connections": [
+        {
+            "metadata": {
+                "points": "305,52 345,52"
+            },
+            "src": {
+                "port": "output",
+                "process": "dqmmrequest1"
+            },
+            "tgt": {
+                "port": "in",
+                "process": "dqmmclient1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "136,52 176,52"
+            },
+            "src": {
+                "port": "output",
+                "process": "messagegenerator1"
+            },
+            "tgt": {
+                "port": "input",
+                "process": "dqmmrequest1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "474,52 501.99999952316284,52 501.99999952316284,61 529.9999990463257,61"
+            },
+            "src": {
+                "port": "out",
+                "process": "dqmmclient1"
+            },
+            "tgt": {
+                "port": "in",
+                "process": "tofile1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "588.9999990463257,52 628.9999990463257,52"
+            },
+            "src": {
+                "port": "file",
+                "process": "tofile1"
+            },
+            "tgt": {
+                "port": "file",
+                "process": "writefile1"
+            }
+        }
+    ],
+    "inports": {},
+    "outports": {},
+    "metadata": {}
+}
