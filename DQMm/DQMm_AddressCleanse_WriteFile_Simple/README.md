@@ -25,5 +25,5 @@ Follow the steps below to run the example from the Data Pipeline UI:
 
 <br>
 <div class="footer">  
-   &copy; 2021 SAP SE or an SAP affiliate company. All rights reserved.
+   &copy; 2022 SAP SE or an SAP affiliate company. All rights reserved.
 </div>
