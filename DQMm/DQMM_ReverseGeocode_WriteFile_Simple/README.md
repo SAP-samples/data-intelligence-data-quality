@@ -1,7 +1,7 @@
 Example for performing reverse geocoding using DQMm operators to call Data Quality Management microservices
 ===========
 #### Description
-The DQMm Reverser Geo operator creates a request from data that can be passed to the DQMm Client operator to be sent to the service.
+The DQMm Reverse Geo operator creates a request from data that can be passed to the DQMm Client operator to be sent to the service.
 
 #### Prerequisites
 * Subscription to the Data Quality Management, microservices for location data service.
