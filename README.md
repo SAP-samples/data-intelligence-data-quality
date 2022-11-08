@@ -14,10 +14,11 @@ The preferred way of importing the files into your Data Intelligence System is t
 
 1. Go to Data Intelligence System Management - Files tab 
 2. Select the folder you want to import the files to. For example: files > vflow > graphs
-3. Click the Import file or solution icon from the toolbar and select Import File
-4. Browse and open one of the sample tgz files provided
-5. Go to Data Intelligence Modeler - Graphs tab
-6. Open the imported graph, edit the Operator Configuration as needed, and run it
+3. (Optional) Click the Plus icon and select Create Folder to create a new folder for sample files
+4. Select Import File and browse to graph.json to import it
+5. (Optional) Repeat the process to import other files in the folder
+6. Go to Data Intelligence Modeler - Graphs tab
+7. Open the imported graph, edit the Operator Configuration as needed, and run it
 
 ## Known Issues
 No known issues.
