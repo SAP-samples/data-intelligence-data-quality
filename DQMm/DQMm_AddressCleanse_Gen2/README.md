@@ -39,23 +39,6 @@ Follow the steps below to create the Connection object:
 12. Enter your client secret into the **OAuth2 Client Secret** field.
 
 
-#### Import and run the graph
-
-Follow the steps below to import the graph:
-
-1. Download the graph.
-
-2. Open the Data Intelligence Launchpad and open the **Modeler**.
-
-3. Click on the **Graphs** tab.
-
-4. Click on the Import Graph icon and select the downloaded graph.
-
-5. Click on the Run icon to start the graph.
-
-6. Open the Terminal viewer to see the CSV output.
-
-
 
 <br>
 <div class="footer">  
