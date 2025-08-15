@@ -42,5 +42,5 @@ Follow the steps below to create the Connection object:
 
 <br>
 <div class="footer">  
-   &copy; 2023 SAP SE or an SAP affiliate company. All rights reserved.
+   &copy; 2023-2025 SAP SE or an SAP affiliate company. All rights reserved.
 </div>
